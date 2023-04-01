@@ -143,8 +143,11 @@ const animate = function ()
 
 
 
-    kemorori.sprite.setRange((1+koma[Math.floor(anime)])/4, 2/4, 1/4, 1/4);
-    kemorori.sprite.translate(-128+koma[Math.floor(anime)]*4, 130);
+    kemorori.sprite.setRange((3-koma[Math.floor(anime)])/4, 2/4, 1/4, 1/4);
+    kemorori.sprite.translate(
+        -140+koma[Math.floor(anime)]*4,
+        130,
+    );
     doragon.sprite.setRange((1+koma[Math.floor(anime)])/4, 1/16, 1/4, 1/16);
 
     render.clear(1.0, 1.0, 1.0, 1.0);
