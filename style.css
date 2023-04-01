@@ -1,0 +1,102 @@
+#dText
+{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  color: #399;
+}
+#kText
+{
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
+
+  color: #933;
+}
+.text
+{
+  margin: 0.4em;
+  border: 0.2em solid;
+  border-radius: 1em;
+  padding: 0.4em;
+  background-color: transparent;
+}
+
+
+#kButtonL
+{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+#kButtonR
+{
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+.button
+{
+  margin: 0.4em;
+  border: 0.2em solid;
+  border-radius: 1em;
+  padding: 0.4em;
+  font-size: 4svmin;
+  color: #FFF;
+  background-color: #933;
+}
+
+#cWrapper
+{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+canvas
+{
+  image-rendering: crisp-edges;
+}
+
+
+#wrapper
+{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    repeat(4, 1fr);
+  
+  width  : 100svmin;
+  height : 100svmin;
+  
+  position: absolute;
+  left: calc(50vw - 50svmin);
+  top: calc(50svh - 50svmin);
+}
+
+html, body
+{
+  color: #000;
+  background-color : #FFF;
+  font-family: sans-serif;
+  width  : 100vw ;
+  height : 100svh;
+}
+
+*
+{
+  line-height: 2em ;
+  font-size: 4svmin;
+  padding: 0 ;
+  margin: 0 ;
+  border-width: 0 ;
+  box-sizing: border-box ;
+  font-family: sans-serif ;
+  -webkit-user-select: none ;
+  user-select: none ;
+  overflow: hidden;
+}
