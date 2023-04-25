@@ -490,7 +490,7 @@ else
 // バー減り
 const drink = function(momi)
 {
-    feel += momi*elapsed/80000;
+    feel += momi*elapsed/80000 * speedPlay * strongPlay;
     let c = Math.min(elapsed/10000*momi*feel * speedPlay * strongPlay, tankCc);
     tankCc -= c;
     damCc += c;
@@ -1572,6 +1572,7 @@ const animate = function (timeStamp)
             dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
             dora.sprite.translate(0,0);
             kemo.sprite.translate(-128,-48);
+            bar[2].sprite.translate(240, 0);
         }
         else if(r===1)
         {
@@ -1583,6 +1584,7 @@ const animate = function (timeStamp)
             dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
             dora.sprite.translate(0,0);
             kemo.sprite.translate(-128,-48);
+            bar[2].sprite.translate(240, 0);
         }
         wait = 3000;
     }
