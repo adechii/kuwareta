@@ -806,6 +806,7 @@ const animate = function (timeStamp)
                 {
                     stage = 'walk';
                     setKemoText('こんなりゅうほっとけ。');
+                    dragon--;
                 }
                 centerButtonDown = false;
                 wait = 3000;
@@ -1495,7 +1496,6 @@ const animate = function (timeStamp)
         }
         if(nextDistance <= -640)
         {
-            if(nextObject==='dragon') dragon++;
             nextDistance = 320;
             nextRight = true;
             let d;
@@ -1518,6 +1518,7 @@ const animate = function (timeStamp)
                     colorArray[dora.colorNumber].dark,
                 );
                 dora.sprite.scale(192,192);
+                dragon++;
             }
             else
             {
