@@ -1,2 +1,2 @@
 # Kuwareta
-[PLAY](https://ade-chang-fox.github.io/kuwareta/)
+[PLAY](https://adechang-fox.github.io/kuwareta/)
