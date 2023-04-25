@@ -556,7 +556,6 @@ const animate = function (timeStamp)
                 kemo.colorNumber = juice[0].colorNumber;
                 bar[0].colorNumber = juice[0].colorNumber;
                 bar[1].colorNumber = juice[0].colorNumber;
-                bar[2].colorNumber = juice[0].colorNumber;
                 setKemoText(colorArray[juice[0].colorNumber].kemoColorName + 'のジュースをのんだ。おいしかった。');
                 kemo.sprite.setColor(
                     colorArray[kemo.colorNumber].middle,
@@ -586,7 +585,6 @@ const animate = function (timeStamp)
                 kemo.colorNumber = juice[1].colorNumber;
                 bar[0].colorNumber = juice[1].colorNumber;
                 bar[1].colorNumber = juice[1].colorNumber;
-                bar[2].colorNumber = juice[1].colorNumber;
                 setKemoText(colorArray[juice[1].colorNumber].kemoColorName + 'のジュースをのんだ。おいしかった。');
                 kemo.sprite.setColor(
                     colorArray[kemo.colorNumber].middle,
@@ -616,7 +614,6 @@ const animate = function (timeStamp)
                 kemo.colorNumber = juice[2].colorNumber;
                 bar[0].colorNumber = juice[2].colorNumber;
                 bar[1].colorNumber = juice[2].colorNumber;
-                bar[2].colorNumber = juice[2].colorNumber;
                 setKemoText(colorArray[juice[2].colorNumber].kemoColorName + 'のジュースをのんだ。おいしかった。');
                 kemo.sprite.setColor(
                     colorArray[kemo.colorNumber].middle,
@@ -1573,6 +1570,11 @@ const animate = function (timeStamp)
             dora.sprite.translate(0,0);
             kemo.sprite.translate(-128,-48);
             bar[2].sprite.translate(240, 0);
+            bar[2].sprite.setColor(
+                colorArray[dora.colorNumber].middle,
+                colorArray[dora.colorNumber].light,
+                colorArray[dora.colorNumber].dark,
+            );
         }
         else if(r===1)
         {
@@ -1585,6 +1587,11 @@ const animate = function (timeStamp)
             dora.sprite.translate(0,0);
             kemo.sprite.translate(-128,-48);
             bar[2].sprite.translate(240, 0);
+            bar[2].sprite.setColor(
+                colorArray[dora.colorNumber].middle,
+                colorArray[dora.colorNumber].light,
+                colorArray[dora.colorNumber].dark,
+            );
         }
         wait = 3000;
     }
