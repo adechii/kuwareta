@@ -498,6 +498,12 @@ const drink = function(momi)
 {
     feel += momi*elapsed/80000 * speedPlay * strongPlay;
     if(tankCc > 256) tankCc = 256;
+    if(damCc > 64)
+    {
+        dragonCc += damCc - 64;
+        dragonTotalCc += damCc - 64;
+        damCc = 64;
+    }
     let c = Math.min(elapsed/10000*momi*feel * savore[currentSavore].leakTankCc * speedPlay * strongPlay, tankCc);
     tankCc -= c;
     damCc += c;
@@ -505,12 +511,6 @@ const drink = function(momi)
     damCc -= d;
     dragonCc += d;
     dragonTotalCc += d;
-    if(damCc > 64)
-    {
-        dragonCc += damCc - 64;
-        dragonTotalCc += damCc - 64;
-        damCc = 64;
-    }
     if(damCc < 0)
     {
         tankCc += damCc;
@@ -1497,7 +1497,7 @@ const animate = function (timeStamp)
     {
         damCc = 0;
         tankCc = 192;
-        setKemoText('Kuwareta 1.0.2 へようこそ。');
+        setKemoText('Kuwareta 1.0.3 へようこそ。');
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
