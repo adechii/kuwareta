@@ -112,6 +112,22 @@
   border-right-color:  #C6C;
   border-bottom-color: #F9F;
 }
+#text.black
+{
+  color:               #333;
+  border-top-color:    #000;
+  border-left-color:   #333;
+  border-right-color:  #333;
+  border-bottom-color: #666;
+}
+#text.white
+{
+  color:               #CCC;
+  border-top-color:    #999;
+  border-left-color:   #CCC;
+  border-right-color:  #CCC;
+  border-bottom-color: #FFF;
+}
 
 #text
 {
