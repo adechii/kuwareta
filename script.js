@@ -385,7 +385,7 @@ const savore =
         kemoShi: 'こねくりまわし',
         kemoShite: 'こねて',
         kemoShita: 'こねた',
-        sound: 'もにゅ',
+        sound: 'もぬ',
         animation: [4, 2, 3, 0],
         leakTankCc: 1.1,
         leakDamCc: 0.8,
@@ -439,7 +439,7 @@ const savore =
         kemoShi: 'すいだし',
         kemoShite: 'すって',
         kemoShita: 'すった',
-        sound: 'もちゅ',
+        sound: 'ぬにゅ',
         animation: [0, 3, 2, 1],
         leakTankCc: 0.6,
         leakDamCc: 1.5,
@@ -460,10 +460,10 @@ const savore =
         sound: 'こし',
         animation: [4, 1, 3, 2],
         leakTankCc: 1.2,
-        leakDamCc: 1.3,
+        leakDamCc: 0.5,
     },
     {
-        suru: 'なめ',
+        suru: 'なめる',
         sa: 'なめ',
         sare: 'なめられ',
         shi: 'なめまわし',
@@ -528,7 +528,7 @@ const audioCtx = new AudioContext();
 const oscillator = [];
 const gainNode = [];
 
-for(let i = 0 ; i < 4 ; i++)
+for(let i = 0 ; i < 2 ; i++)
 {
     oscillator[i] = audioCtx.createOscillator();
     gainNode[i] = audioCtx.createGain();
@@ -541,16 +541,16 @@ let soundNumber = 0;
 
 const sound = function(startFrequency, endFrequemcy, time)
 {
-    oscillator[soundNumber].frequency.setValueAtTime(startFrequency, audioCtx.currentTime);
-    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time / 3);
-    oscillator[soundNumber].frequency.setValueAtTime(startFrequency, audioCtx.currentTime + time / 3);
-    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 2 / 3);
-    oscillator[soundNumber].frequency.setValueAtTime(startFrequency, audioCtx.currentTime + time * 2 / 3);
-    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 3 / 3);
-    gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time / 9);
-    gainNode[soundNumber].gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + time / 3);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(startFrequency, audioCtx.currentTime + time * 0 / 12);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 4 / 12);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(startFrequency, audioCtx.currentTime + time * 5 / 12);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 8 / 12);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(startFrequency, audioCtx.currentTime + time * 9 / 12);
+    oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 12 / 12);
+    gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time / 12);
+    gainNode[soundNumber].gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + time * 2 / 12);
     gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time);
-    soundNumber = (soundNumber + 1) % 4;
+    soundNumber = (soundNumber + 1) % 2;
 }
 
 let previousTimeStamp = 0;
@@ -678,21 +678,27 @@ const animate = function (timeStamp)
     {
         wait -= elapsed;
 
-        if(leftButtonDown) sound(1650, 110, 0.2);
-        if(centerButtonDown) sound(1760, 220, 0.2);
-        if(rightButtonDown) sound(1980, 440, 0.2);
+        if(leftButtonDown) sound(770, 110, 0.2);
+        if(centerButtonDown) sound(880, 220, 0.2);
+        if(rightButtonDown) sound(1000, 440, 0.2);
 
         // はじめるボタン
         if(stage === 'start')
         {
             if(centerButtonDown)
             {
-                setKemoText('いこう。');
+                const r = randomInt(8);
+                if(r===0) setKemoText('いこう。');
+                if(r===1) setKemoText('もらさないようにしなきゃ。');
+                if(r===2) setKemoText('くろいろのドラゴンにあわないといいけど…。');
+                if(r===3) setKemoText('しろいろのドラゴンさんにあいたいな。');
+                if(r===4) setKemoText('またたべられるんだ…。');
+                if(r===5) setKemoText('がんばろう。');
+                if(r===6) setKemoText('おもらししないようにしなきゃ。');
+                if(r===7) setKemoText('いかなきゃ。');
 
                 oscillator[0].start();
                 oscillator[1].start();
-                oscillator[2].start();
-                oscillator[3].start();
 
                 centerButtonDown = false;
                 wait = 0;
@@ -723,7 +729,7 @@ const animate = function (timeStamp)
                     colorArray[kemo.colorNumber].light,
                     colorArray[kemo.colorNumber].dark,
                 );
-                tankCc += randomInt(32)+32;
+                tankCc += randomInt(32)+64;
                 drink(0);
                 juice[0].sprite.x = -512;
                 leftButtonDown = false;
@@ -974,7 +980,6 @@ const animate = function (timeStamp)
                     dora.sprite.translate(0,0);
                     kemo.sprite.translate(-128,-48);
                     bar[2].sprite.translate(244, 0);
-                    
                 }
                 else if(r===1)
                 {
@@ -986,7 +991,6 @@ const animate = function (timeStamp)
                     dora.sprite.translate(0,0);
                     kemo.sprite.translate(-128,-48);
                     bar[2].sprite.translate(244, 0);
-                    
                 }
                 else if(r===2)
                 {
@@ -998,13 +1002,11 @@ const animate = function (timeStamp)
                     dora.sprite.translate(0,0);
                     kemo.sprite.translate(-128,-48);
                     bar[2].sprite.translate(244, 0);
-                    
                 }
                 else
                 {
                     stage = 'walk';
                     setKemoText('こんなりゅうほっとけ。');
-                    
                 }
                 centerButtonDown = false;
                 wait = 3000;
@@ -1118,17 +1120,17 @@ const animate = function (timeStamp)
                 kemo.sprite.scale(-32, 32);
                 kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-56, 60);
-                sound(108, 216, 0.4);
+                sound(115, 230, 0.4);
             }
             else if(z!==1 && a===1)
             {
                 kemo.sprite.translate(-64, 0);
-                sound(104, 208, 0.4);
+                sound(110, 220, 0.4);
             }
             else if(z!==2 && a===2)
             {
                 kemo.sprite.translate(-72, -48);
-                sound(100, 200, 0.4);
+                sound(105, 210, 0.4);
             }
         }
         // 腸に送られる
@@ -1184,7 +1186,7 @@ const animate = function (timeStamp)
                 kemo.sprite.translate(-48, -144);
                 kemo.sprite.setRange(1/4,2/4,1/4,1/4);
                 kemo.sprite.scale(-32, 32);
-                sound(80, 160, 0.4);
+                sound(75, 150, 0.4);
             }
             else if(z!==1 && a===1)
             {
@@ -1194,7 +1196,7 @@ const animate = function (timeStamp)
             else if(z!==2 && a===2)
             {
                 kemo.sprite.translate(48, -160);
-                sound(60, 120, 0.4);
+                sound(65, 130, 0.4);
             }
         }
         // 排泄される
@@ -1216,18 +1218,19 @@ const animate = function (timeStamp)
                 kemo.sprite.translate(104, -164);
                 kemo.sprite.setRange(1/4,2/4,1/4,1/4);
                 kemo.sprite.scale(-32, 32);
-                sound(40, 80, 0.4);
+                sound(65, 130, 0.4);
             }
             else if(z!==1 && a===1)
             {
                 kemo.sprite.translate(136, -168);
                 kemo.sprite.setRange(2/4,2/4,1/4,1/4);
-                sound(30, 60, 0.4);
+                sound(60, 120, 0.4);
             }
             else if(z!==2 && a===2)
             {
                 kemo.sprite.translate(180, -192+32);
                 kemo.sprite.setRange(1/4,3/4,1/4,1/4);
+                sound(55, 110, 0.4);
             }
         }
         // 疲れてる
@@ -1268,38 +1271,35 @@ const animate = function (timeStamp)
             if(savore[currentSavore].animation[z]!==0 && savore[currentSavore].animation[a]===0)
             {
                 dora.sprite.setRange(0/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,99);
-                sound(100, 200, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 1/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,96);
-                sound(110,220, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,93);
-                sound(120, 240, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-77,96);
-                sound(105, 210, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 2/16, 1/4, 1/16);
-                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-83,96);
-                sound(115, 230, 0.3);
             }
+            if(z!==0 && a===0)      sound(120, 240, 0.3);
+            else if(z!==2 && a===2) sound(120, 240, 0.3);
         }
         // 腹の中
         else if(stage === 'savore0Stomach')
@@ -1321,36 +1321,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-91,-80);
-                sound(110, 220, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-80);
-                sound(100, 200, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-85,-80);
-                sound(90, 180, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-83);
-                sound(105, 210, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 4/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-77);
-                sound(95, 190, 0.3);
             }
+            if(z!==0 && a===0)      sound(100, 200, 0.3);
+            else if(z!==2 && a===2) sound(100, 200, 0.3);
         }
         // 腸の中
         else if(stage === 'savore0Crotch')
@@ -1372,36 +1369,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-147);
-                sound(90, 180, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-144);
-                sound(80, 160, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-141);
-                sound(70, 140, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-67,-144);
-                sound(85, 170, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 6/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-61,-144);
-                sound(75, 150, 0.3);
             }
+            if(z!==0 && a===0)      sound(80, 160, 0.3);
+            else if(z!==2 && a===2) sound(80, 160, 0.3);
         }
         // 尻の中
         else if(stage === 'savore0Hip')
@@ -1423,36 +1417,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-157);
-                sound(40, 130, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-160);
-                sound(50, 150, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-163);
-                sound(60, 170, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(83,-160);
-                sound(45, 140, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 8/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(77,-160);
-                sound(55, 160, 0.3);
             }
+            if(z!==0 && a===0)      sound(60, 120, 0.3);
+            else if(z!==2 && a===2) sound(60, 120, 0.3);
         }
         // 口の中後半
         else if(stage === 'savore1Mouth')
@@ -1472,38 +1463,35 @@ const animate = function (timeStamp)
             if(savore[currentSavore].animation[z]!==0 && savore[currentSavore].animation[a]===0)
             {
                 dora.sprite.setRange(0/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,99);
-                sound(100, 200, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 1/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,96);
-                sound(110, 220, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-80,93);
-                sound(120, 240, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 1/16, 1/4, 1/16);
-                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-77,96);
-                sound(105, 210, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 2/16, 1/4, 1/16);
-                kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
+                kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-83,96);
-                sound(115, 230, 0.3);
             }
+            if(z!==0 && a===0)      sound(120, 240, 0.3);
+            else if(z!==2 && a===2) sound(120, 240, 0.3);
         }
         // 腹の中後半
         else if(stage === 'savore1Stomach')
@@ -1525,36 +1513,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-91,-80);
-                sound(110, 220, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-80);
-                sound(100, 200, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-85,-80);
-                sound(90, 180, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 3/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-83);
-                sound(105, 210, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 4/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 1/4, 1/4, 1/4);
                 kemo.sprite.translate(-88,-77);
-                sound(95, 190, 0.3);
             }
+            if(z!==0 && a===0)      sound(100, 200, 0.3);
+            else if(z!==2 && a===2) sound(100, 200, 0.3);
         }
         // 腸の中後半
         else if(stage === 'savore1Crotch')
@@ -1576,36 +1561,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-147);
-                sound(90, 180, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-144);
-                sound(80, 160, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-64,-141);
-                sound(70, 140, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 5/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-67,-144);
-                sound(85, 170, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 6/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(-61,-144);
-                sound(75, 150, 0.3);
             }
+            if(z!==0 && a===0)      sound(80, 160, 0.3);
+            else if(z!==2 && a===2) sound(80, 160, 0.3);
         }
         // 尻の中後半
         else if(stage === 'savore1Hip')
@@ -1627,36 +1609,33 @@ const animate = function (timeStamp)
                 dora.sprite.setRange(0/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-157);
-                sound(40, 130, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==1 && savore[currentSavore].animation[a]===1)
             {
                 dora.sprite.setRange(1/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(2/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-160);
-                sound(50, 150, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==2 && savore[currentSavore].animation[a]===2)
             {
                 dora.sprite.setRange(2/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(80,-163);
-                sound(60, 170, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==3 && savore[currentSavore].animation[a]===3)
             {
                 dora.sprite.setRange(3/4, 7/16, 1/4, 1/16);
                 kemo.sprite.setRange(1/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(83,-160);
-                sound(45, 140, 0.3);
             }
             else if(savore[currentSavore].animation[z]!==4 && savore[currentSavore].animation[a]===4) 
             {
                 dora.sprite.setRange(0/4, 8/16, 1/4, 1/16);
                 kemo.sprite.setRange(3/4, 2/4, 1/4, 1/4);
                 kemo.sprite.translate(77,-160);
-                sound(55, 160, 0.3);
             }
+            if(z!==0 && a===0)      sound(60, 120, 0.3);
+            else if(z!==2 && a===2) sound(60, 120, 0.3);
         }
 
         // 次のステージへ
@@ -1760,7 +1739,7 @@ const animate = function (timeStamp)
     {
         damCc = 0;
         tankCc = 192;
-        setKemoText('Kuwareta 1.1.0 へようこそ。');
+        setKemoText('Kuwareta 1.1.1 へようこそ。');
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
@@ -1777,7 +1756,7 @@ const animate = function (timeStamp)
         currentSavore = 0;
         wantToLeak = false;
     
-        animation = -elapsed;
+        animation = -100;
     
         nextDistance = 512;
         nextRight = true;
@@ -1791,7 +1770,7 @@ const animate = function (timeStamp)
         kemo.sprite.translate(0,-192+32);
         dora.sprite.translate(512,0);
 
-        dora.colorNumber = randomInt(6);
+        dora.colorNumber = 6;//randomInt(6);
 
         dora.sprite.setColor(
             colorArray[dora.colorNumber].middle,
@@ -1876,9 +1855,9 @@ const animate = function (timeStamp)
                 wantToLeak = randomInt(2);
                 dora.sprite.setRange(0/4,0/16,1/4,1/16);
                 dora.sprite.x = Math.floor(nextDistance + 128);
-                if(dragonNumber % 8===6)
+                if(dragonNumber % 6===4)
                     dora.colorNumber = 6;
-                else if(dragonNumber % 8===7)
+                else if(dragonNumber % 6===5)
                     dora.colorNumber = 7;
                 else
                     dora.colorNumber = randomInt(6);
@@ -2282,7 +2261,7 @@ const animate = function (timeStamp)
         else if(r===6) setKemoText('くわれた…。');
         else if(r===7) setKemoText('ドラゴンさんのいいかおり…。');
         wait = 3000;
-        sound(110, 220, 0.5);
+        sound(120, 240, 0.5);
         dora.sprite.setRange(1/4, 1/16, 1/4, 1/16);
         kemo.sprite.translate(-80, 96);
         kemo.sprite.scale(-32, 32);
@@ -2339,7 +2318,7 @@ const animate = function (timeStamp)
         else if(r===6) setKemoText('ここきつすぎてだめえ…。');
         else if(r===7) setKemoText('ここもドラゴンさんのいいかおり…。');
         wait = 3000;
-        sound(50, 100, 0.5);
+        sound(60, 120, 0.5);
         dora.sprite.setRange(1/4, 7/16, 1/4, 1/16);
         kemo.sprite.translate(80,-160);
         kemo.sprite.scale(-32, 32);
@@ -2389,11 +2368,11 @@ const animate = function (timeStamp)
             savore[currentSavore].sound+
             savore[currentSavore].sound+
             savore[currentSavore].sound+'。');
-        animation = 0;
+        animation = -100;
         if(dora.colorNumber === 6)
-            speedPlay += 2;
+            speedPlay += 1;
         if(dora.colorNumber === 7)
-            longPlay += 2;
+            longPlay += 1;
         wait = 12000 * longPlay;
     }
     // 口以外で味わうアニメーション前半
@@ -2411,7 +2390,7 @@ const animate = function (timeStamp)
             savore[currentSavore].sound+
             savore[currentSavore].sound+
             savore[currentSavore].sound+'。');
-        animation = -elapsed;
+        animation = -100;
         wait = 12000 * longPlay;
     }
     // 味わうアニメーション後半
