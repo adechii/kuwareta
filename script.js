@@ -1770,7 +1770,7 @@ const animate = function (timeStamp)
         kemo.sprite.translate(0,-192+32);
         dora.sprite.translate(512,0);
 
-        dora.colorNumber = 6;//randomInt(6);
+        dora.colorNumber = randomInt(6);
 
         dora.sprite.setColor(
             colorArray[dora.colorNumber].middle,
