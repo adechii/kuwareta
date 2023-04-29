@@ -759,7 +759,7 @@ const animate = function (timeStamp)
                     colorArray[kemo.colorNumber].light,
                     colorArray[kemo.colorNumber].dark,
                 );
-                tankCc += randomInt(32)+32;
+                tankCc += randomInt(32)+64;
                 drink(0);
                 juice[1].sprite.x = -512;
                 centerButtonDown = false;
@@ -789,7 +789,7 @@ const animate = function (timeStamp)
                     colorArray[kemo.colorNumber].light,
                     colorArray[kemo.colorNumber].dark,
                 );
-                tankCc += randomInt(32)+32;
+                tankCc += randomInt(32)+64;
                 drink(0);
                 juice[2].sprite.x = -512;
                 rightButtonDown = false;
@@ -1739,7 +1739,7 @@ const animate = function (timeStamp)
     {
         damCc = 0;
         tankCc = 192;
-        setKemoText('Kuwareta 1.1.1 へようこそ。');
+        setKemoText('Kuwareta 1.1.2 へようこそ。');
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
