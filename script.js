@@ -1719,14 +1719,14 @@ const animate = function (timeStamp)
             else if(stage === 'answerMouth') stage = 'savore0Mouth';
             //else if(stage === 'selectMouth') stage = 'savore0Mouth';
 
-            else if(!dragonKeep && stage === 'savore0Mouth') stage = 'savore1Mouth';
-            else if(!dragonKeep && stage === 'savore1Mouth') stage = 'finishMouth';
-            else if(!dragonKeep && stage === 'savore0Stomach') stage = 'savore1Stomach';
-            else if(!dragonKeep && stage === 'savore1Stomach') stage = 'finishStomach';
-            else if(!dragonKeep && stage === 'savore0Crotch') stage = 'savore1Crotch';
-            else if(!dragonKeep && stage === 'savore1Crotch') stage = 'finishCrotch';
-            else if(!dragonKeep && stage === 'savore0Hip') stage = 'savore1Hip';
-            else if(!dragonKeep && stage === 'savore1Hip') stage = 'finishHip';
+            else if((!dragonKeep || !gameOver) && stage === 'savore0Mouth')    stage = 'savore1Mouth';
+            else if((!dragonKeep || !gameOver) && stage === 'savore1Mouth')    stage = 'finishMouth';
+            else if((!dragonKeep || !gameOver) && stage === 'savore0Stomach')  stage = 'savore1Stomach';
+            else if((!dragonKeep || !gameOver) && stage === 'savore1Stomach')  stage = 'finishStomach';
+            else if((!dragonKeep || !gameOver) && stage === 'savore0Crotch')   stage = 'savore1Crotch';
+            else if((!dragonKeep || !gameOver) && stage === 'savore1Crotch')   stage = 'finishCrotch';
+            else if((!dragonKeep || !gameOver) && stage === 'savore0Hip')      stage = 'savore1Hip';
+            else if((!dragonKeep || !gameOver) && stage === 'savore1Hip')      stage = 'finishHip';
 
             else if(dragonKeep && gameOver && stage === 'savore0Mouth') stage = 'keep';
             else if(dragonKeep && gameOver && stage === 'savore1Mouth') stage = 'keep';
@@ -1833,7 +1833,7 @@ const animate = function (timeStamp)
     {
         damCc = 0;
         tankCc = 128;
-        setKemoText('Kuwareta 1.1.3 へようこそ。');
+        setKemoText('Kuwareta 1.1.4 へようこそ。');
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
