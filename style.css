@@ -64,6 +64,28 @@
   border-right-color:  #C6C;
   border-bottom-color: #F9F;
 }
+#buttonL.black,
+#buttonC.black,
+#buttonR.black
+{
+  color:               #FFF;
+  background-color:    #333;
+  border-top-color:    #000;
+  border-left-color:   #333;
+  border-right-color:  #333;
+  border-bottom-color: #666;
+}
+#buttonL.white,
+#buttonC.white,
+#buttonR.white
+{
+  color:               #FFF;
+  background-color:    #CCC;
+  border-top-color:    #999;
+  border-left-color:   #CCC;
+  border-right-color:  #CCC;
+  border-bottom-color: #FFF;
+}
 #text.red
 {
   color:               #C66;
@@ -154,7 +176,7 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 4dvmin;
+  font-size: 3dvmin;
   /*font-weight: bold;*/
   background-color: transparent;
 }
@@ -168,7 +190,7 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 4dvmin;
+  font-size: 3dvmin;
   /*font-weight: bold;*/
   background-color: transparent;
 }
@@ -182,7 +204,7 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 4dvmin;
+  font-size: 3dvmin;
   /*font-weight: bold;*/
   background-color: transparent;
 }
