@@ -216,10 +216,7 @@ const setKemoText = function(text)
     buttonCElem.style.display = 'none';
     buttonRElem.style.display = 'none';
 
-    if(tankCc + damCc > 0 || stage==='result')
-        textElem.textContent = text;
-    else
-        textElem.textContent = '…。';
+    textElem.textContent = text;
     textElem.style.display = 'block';
 
     textElem.className = colorArray[kemo.colorNumber].name;
@@ -652,6 +649,8 @@ let whiteDragonNumber = 5;
 
 let doraText = false;
 
+let milkingStage = false;
+
 if(randomInt(2))
 {
     nextObject = 'dragon';
@@ -669,6 +668,8 @@ else
 // バー減り
 const drink = function(momi)
 {
+    if(milkingStage) return;
+
     let roriLeak = 0.8;
     let shotaLeak = 0.8;
     if(kemo.rorishota === 'ケモロリ') roriLeak = 1.2;
@@ -1758,22 +1759,136 @@ const animate = function (timeStamp)
         {
             if(tankCc + damCc <= 0 && !gameOver)
             {
-                speedPlay = 0.6;
-                wait = 9000;
+                strongPlay = 1.4;
+                speedPlay = 0.5;
+                wait = 60000;
                 gameOver = true;
                 let r = randomInt(8);
-                if(r === 0) setDoraText('ぐへへ、もう蜜が出ないな。')
-                if(r === 1) setDoraText('ぐへへ、もう干からびたな。')
-                if(r === 2) setDoraText('ぐへへ、もう蜜を出しきったな。')
-                if(r === 3) setDoraText('ぐへへ、もう蜜が無いな。')
-                if(r === 4) setDoraText('ぐへへ、もう蜜を漏らしきったな。')
-                if(r === 5) setDoraText('ぐへへ、もう蜜が出なくなったな。')
-                if(r === 6) setDoraText('ぐへへ、もう蜜を出し尽くしたな。')
-                if(r === 7) setDoraText('ぐへへ、もう蜜を出せないな。')
+                if(r === 0) setDoraText('ぐへへ、もう蜜が出ないな。でも、実はまだたっぷり出るはずだ。');
+                if(r === 1) setDoraText('ぐへへ、もう蜜が出ないか。でも、まだ満足できん。無理にでもたくさん出せ。');
+                if(r === 2) setDoraText('ぐへへ、もう蜜を出しきってしまったな。だが、まだまだ無理にでもたくさん出してもらう。');
+                if(r === 3) setDoraText('ぐへへ、もう蜜が無いな。だが、満足できないから、無理にでもたっぷり出してもらうぞ。');
+                if(r === 4) setDoraText('ぐへへ、もう蜜を漏らしきったな。でも、最後にたっぷり味わわせてもらうぞ。');
+                if(r === 5) setDoraText('ぐへへ、もう蜜が出なくなったな。だが最後は、最高の気持ちよさを味わってもらうぞ。');
+                if(r === 6) setDoraText('ぐへへ、もう蜜を出し尽くしたな。だが最後は、最高の気持ちよさを味わうがいい。');
+                if(r === 7) setDoraText('ぐへへ、もう蜜を出せないな。だが、次は最高の気持ちよさを味わわせてやる。');
+
+                bar[0].sprite.setRange(1/16, 2/4, 1/16, 1/4);
+                bar[2].sprite.setRange(1/16, 2/4, 1/16, 1/4);
+
+                bar[0].sprite.y = Math.round(-192 + 0) / 2;
+                bar[0].sprite.scale(4, Math.round(0) / 2);
+                bar[2].sprite.y = Math.round(-192 + 0) / 2;
+                bar[2].sprite.scale(4, Math.round(0) / 2);
+                milkingStage = 1;
             }
-            if(gameOver && wait < 1000)
+            if(gameOver && wait < 50000 && milkingStage === 1)
             {
+                speedPlay = 1;
+                milkingStage = 2;
+                let r = randomInt(4);
+                if(r === 0) setKemoText('ひいい、それだけは　やめてえ、');
+                if(r === 1) setKemoText('だめ、それは、だめええ、');
+                if(r === 2) setKemoText('おねがい、それはやめてえ、');
+                if(r === 3) setKemoText('だめえ、それだけは　だめえ、');
+                bar[0].sprite.y = Math.round(-192 + 128) / 2;
+                bar[0].sprite.scale(4, Math.round(128) / 2);
+                bar[2].sprite.y = Math.round(-192 + 0) / 2;
+                bar[2].sprite.scale(4, Math.round(0) / 2);
+            }
+            if(gameOver && wait < 40000 && milkingStage === 2)
+            {
+                speedPlay = 2;
+                milkingStage = 3;
+                let r = randomInt(4);
+                if(r === 0) setDoraText('いくぞ。たっぷり出せよ。');
+                if(r === 1) setDoraText('最高だぞ、思い切り出せよ。');
+                if(r === 2) setDoraText('最高に気持ちいから、覚悟しろよ。');
+                if(r === 3) setDoraText('最高に気持ちいから、頑張れよ。');
+            }
+            if(gameOver && wait < 30000 && milkingStage === 3)
+            {
+                speedPlay = 3;
+                milkingStage = 4;
+                let r = randomInt(4);
+                if(r === 0) setKemoText('いやああ！だええ！もうとえてええ！');
+                if(r === 1) setKemoText('やえて！やえてえ！いやあああ！');
+                if(r === 2) setKemoText('とえて！うごかさないれえ！もうだえええ！');
+                if(r === 3) setKemoText('うごかさないで！もう　うごかさないでえ！');
+            }
+            if(gameOver && wait < 20000 && milkingStage === 4)
+            {
+                speedPlay = 4;
+                milkingStage = 5;
+                let r = randomInt(4);
+                if(r === 0) setDoraText('さあ、美味しいのを期待してるぞ。出してしまえ。');
+                if(r === 1) setDoraText('気持ちいだろ。さあ、我慢せず出せ。');
+                if(r === 2) setDoraText('いいぞ。あと一息だ。もう出してしまえ。');
+                if(r === 3) setDoraText('いいぞ。さあ、もう我慢せず出せ。');
+            }
+            if(gameOver && wait < 10000 && milkingStage === 5)
+            {
+                speedPlay = 1;
+                milkingStage = 1;
+                strongPlay = 1.6;
+                milkingStage = 6;
+                let r = randomInt(8);
+                if(r === 0) setKemoText('いっ！！！');
+                if(r === 1) setKemoText('ひっ！！！');
+                if(r === 2) setKemoText('くっ！！！');
+                if(r === 3) setKemoText('あっ！！！');
+                if(r === 4) setKemoText('んあっ！！！');
+                if(r === 5) setKemoText('くあっ！！！');
+                if(r === 6) setKemoText('ひあっ！！！');
+                if(r === 7) setKemoText('いあっ！！！');
+            }
+            if(gameOver && wait < 1000 && milkingStage === 6)
+            {
+                milkingStage = 7;
                 speedPlay = 0;
+            }
+
+            if(wait < 10000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 96) / 2;
+                bar[0].sprite.scale(4, Math.round(96) / 2);
+                bar[2].sprite.y = Math.round(-192 + 32) / 2;
+                bar[2].sprite.scale(4, Math.round(32) / 2);
+            }
+            if(wait < 9000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 64) / 2;
+                bar[0].sprite.scale(4, Math.round(64) / 2);
+                bar[2].sprite.y = Math.round(-192 + 64) / 2;
+                bar[2].sprite.scale(4, Math.round(64) / 2);
+            }
+            if(wait < 8000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 48) / 2;
+                bar[0].sprite.scale(4, Math.round(48) / 2);
+                bar[2].sprite.y = Math.round(-192 + 80) / 2;
+                bar[2].sprite.scale(4, Math.round(80) / 2);
+            }
+            if(wait < 7000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 32) / 2;
+                bar[0].sprite.scale(4, Math.round(32) / 2);
+                bar[2].sprite.y = Math.round(-192 + 96) / 2;
+                bar[2].sprite.scale(4, Math.round(96) / 2);
+            }
+            if(wait < 6000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 16) / 2;
+                bar[0].sprite.scale(4, Math.round(16) / 2);
+                bar[2].sprite.y = Math.round(-192 + 112) / 2;
+                bar[2].sprite.scale(4, Math.round(112) / 2);
+            }
+            if(wait < 5000 && milkingStage === 6)
+            {
+                bar[0].sprite.y = Math.round(-192 + 0) / 2;
+                bar[0].sprite.scale(4, Math.round(0) / 2);
+                bar[2].sprite.y = Math.round(-192 + 128) / 2;
+                bar[2].sprite.scale(4, Math.round(128) / 2);
             }
         }
 
@@ -1882,10 +1997,10 @@ const animate = function (timeStamp)
             else if(stage === 'dry'){
                 stage = 'result';
                 let r = randomInt(4);
-                if(r === 0) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、きもちよくて、ひからびちゃった。きもちよかった…。');
-                if(r === 1) setKemoText(dragonNumber + 'たいめのドラゴンさんに、しぼりつくされちゃった。きもちよかった…。');
-                if(r === 2) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、すいつくされちゃった。きもちよかった…。');
-                if(r === 3) setKemoText(dragonNumber + 'たいめのドラゴンさんに、あじわいつくされちゃった。きもちよかった…。');
+                if(r === 0) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、きもちよくて、ひからびちゃった。さいこうに　きもちよかった…。');
+                if(r === 1) setKemoText(dragonNumber + 'たいめのドラゴンさんに、しぼりつくされちゃった。さいこうに　きもちよかった…。');
+                if(r === 2) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、すいつくされちゃった。さいこうに　きもちよかった…。');
+                if(r === 3) setKemoText(dragonNumber + 'たいめのドラゴンさんに、あじわいつくされちゃった。さいこうに　きもちよかった…。');
                 dragonNumber = 1;
                 wait = 6000;
             }
@@ -1960,6 +2075,7 @@ const animate = function (timeStamp)
 
         flushColor = false;
 
+        milkingStage = 0;
         drink(0);
 
         kemo.sprite.setRange(0/4,0/4,1/4,1/4);
@@ -1988,6 +2104,8 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
+        bar[0].sprite.setRange(1/16, 2/4, 1/16, 1/4);
+
         dora.sprite.setColor(
             colorArray[dora.colorNumber].middle,
             colorArray[dora.colorNumber].light,
@@ -1999,7 +2117,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.7 へようこそ。');
+        setKemoText('Kuwareta 1.1.8 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
@@ -2336,7 +2454,7 @@ const animate = function (timeStamp)
         else if(r===2)
             setKemoText('もう、だめ、…。');
         else if(r===3)
-            setKemoText('やっと、おわった…。');
+            setKemoText('もう、むり、…。');
         wait = 6000;
         kemo.sprite.x = 0;
         nextDistance = -256;
@@ -2735,7 +2853,7 @@ const animate = function (timeStamp)
                     'たら　でちゃう…。'
                 );
             else if(r===8) setKemoText('やさしくして…。');
-            else if(r===9) setKemoText('きもちよくね…。');
+            else if(r===9) setKemoText('きもちよくしてね…。');
             else if(r===10) setKemoText('あんまり　'+savore[currentSavore].kemoShi+'すぎないでね…。');
             else if(r===11) setKemoText('あんまり　'+savore[currentSavore].kemoSa+'ないでね…。');
             else if(r===12) setKemoText('きもちよすぎるのは　だめだよ…。');
