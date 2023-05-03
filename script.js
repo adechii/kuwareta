@@ -565,7 +565,7 @@ const complaint =
     'こんなのむり、はあ、はあ、…。',
     'はあ、はあ、きもちよくて　もれちゃった、…。',
     'はあ、きもちよくて　でちゃった、…。',
-    'ひあ、もらしたく　なかったのに、…。',
+    'ひああ、もらしたく　なかったのに、…。',
     'ひああ、だしたく　なかったのに、…。',
     'はあ、はあ、きもちよくて　がまんできないよ、…。',
     'ひい、もれちゃった、…。',
@@ -1787,9 +1787,9 @@ const animate = function (timeStamp)
                 speedPlay = 1;
                 milkingStage = 2;
                 let r = randomInt(4);
-                if(r === 0) setKemoText('ひいい、それだけは　やめてえ、');
+                if(r === 0) setKemoText('ひいい、それだけは　やめて、');
                 if(r === 1) setKemoText('だめ、それは、だめええ、');
-                if(r === 2) setKemoText('おねがい、それはやめてえ、');
+                if(r === 2) setKemoText('おねがい、それはやめて、');
                 if(r === 3) setKemoText('だめえ、それだけは　だめえ、');
                 bar[0].sprite.y = Math.round(-192 + 128) / 2;
                 bar[0].sprite.scale(4, Math.round(128) / 2);
@@ -2044,7 +2044,7 @@ const animate = function (timeStamp)
     if(stage === 'title')
     {
         damCc = 0;
-        tankCc = 16;
+        tankCc = 80;
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
@@ -2446,15 +2446,20 @@ const animate = function (timeStamp)
     // 疲れて動けない
     else if(stage === 'tired')
     {
-        let r = randomInt(4);
-        if(r===0)
-            setKemoText('ひいいい…。');
-        else if(r===1)
-            setKemoText('はあ、はあ、はあ、…。');
-        else if(r===2)
-            setKemoText('もう、だめ、…。');
-        else if(r===3)
-            setKemoText('もう、むり、…。');
+        if(!gameOver)
+        {
+            let r = randomInt(4);
+            if(r===0)
+                setKemoText('ひいいい…。');
+            else if(r===1)
+                setKemoText('はあ、はあ、はあ、…。');
+            else if(r===2)
+                setKemoText('もう、だめ、…。');
+            else if(r===3)
+                setKemoText('もう、むり、…。');
+        }else{
+            setKemoText('…。');
+        }
         wait = 6000;
         kemo.sprite.x = 0;
         nextDistance = -256;
