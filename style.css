@@ -176,7 +176,8 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 3dvmin;
+  font-size: 3.2dvmin;
+  overflow-x: visible;
   /*font-weight: bold;*/
   background-color: transparent;
 }
@@ -190,7 +191,8 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 3dvmin;
+  font-size: 3.2dvmin;
+  overflow-x: visible;
   /*font-weight: bold;*/
   background-color: transparent;
 }
@@ -204,7 +206,8 @@
   border: 0.1em solid;
   border-radius: 2em;
   padding: 0.4em;
-  font-size: 3dvmin;
+  font-size: 3.2dvmin;
+  overflow-x: visible;
   /*font-weight: bold;*/
   background-color: transparent;
 }

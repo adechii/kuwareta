@@ -532,11 +532,11 @@ const ccCry =
     'すいぶんがほしい…。',
     'すいぶんがそろそろひつようだ…。',
     'からだのすいぶんが、すくなくなってきた…。',
-    'からだのすいぶんが、もうすくない…。',
-    'そろそろひからびちゃうかも…。',
-    'ひからびそう…。',
-    'だめ…ひからびる…。',
-    'もうだめ…すぐにひからびちゃう…。',
+    'からだのすいぶんが　もうすくない…。',
+    'そろそろひからびちゃう…ジュースほしい…。',
+    'ひからびそう…ジュースほしい…。',
+    'だめ…ひからびる…ジュース…。',
+    'もうだめ…すぐにひからびちゃう…ジュースはやく…。',
 ];
 // 気持ちよがる台詞配列
 const feelCry =
@@ -546,16 +546,16 @@ const feelCry =
     'すこしずつ、よくなってきた…。',
     'きもちいかも…。',
     'きもちい…。',
-    'やだ、こんなに　きもちいの…。',
-    'ひいい、きもちいよ…。',
-    'やああん　きもちい…。',
-    'きもちよくて、もういやあ…。',
+    'やだ、こんなに　きもちいの、…。',
+    'ひいい、きもちいよ、…。',
+    'やああ、きもちい、…。',
+    'きもちよくて、もういやあ、…。',
     'あ、からだ　おかしくなる、もうやめて、',
-    'ひう、これいじょう、やめ、でる、でるから、',
-    'あ、あ、もうやめ、きもち、いあ、',
-    'いあ、だええ、やえてえ、',
-    'あ、らえ、らええ、でゆ、でちゃ、あ、',
-    'やえ、もれゆ、もれゆ、あ、あ、',
+    'ひい、これいじょう、やめ、でる、でるから、',
+    'く、もうやめ、きもち、きもちい、',
+    'いあ、だえ、やえて、とろとろしちゃ、',
+    'くあ、らえ、でゆ、みつでちゃ、あ、',
+    'やえ、こわれゆ、こわれゆ、あ、あ、',
     'あ、あ、あ、あ、あ、あ、',
 ];
 // 終わった時の台詞配列
@@ -567,14 +567,14 @@ const complaint =
     'ひいい　きもちよかった…。',
     'こんなのむり、はあ、はあ、…。',
     'はあ、はあ、きもちよくて　もれちゃった、…。',
-    'はあ、はあ、きもちよくて　でちゃった、…。',
-    'ひああ、もらしたく　なかったのに、…。',
+    'はあ、きもちよくて　でちゃった、…。',
+    'ひあ、もらしたく　なかったのに、…。',
     'ひああ、だしたく　なかったのに、…。',
-    'はあ、はあ、きもちよくて　がまんできない、…。',
-    'ひい、ひい、もれちゃった、…。',
+    'はあ、はあ、きもちよくて　がまんできないよ、…。',
+    'ひい、もれちゃった、…。',
     'ひい、ひい、でちゃった、…。',
-    'きもちい、もれてた、…。',
-    'きもちい、でてた、…。',
+    'く、きもちい、とろとろ　もれてた、…。',
+    'ひ、きもちい、とろとろ　でてた、…。',
     'もうだえ、からだ　こわれゆ、…。',
     'はあ、はあ、はあ、はあ、はあ、…。',
 ];
@@ -1077,7 +1077,8 @@ const animate = function (timeStamp)
                 if(r===0)
                 {
                     stage = 'eatenAngry';
-                    setDoraText(colorArray[dora.colorNumber].dragonOne + 'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。強めに味わってやろう。');
+                    setDoraText(colorArray[dora.colorNumber].dragonOne +
+                        'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。強めに味わってやろう。');
                     strongPlay += 0.2;
                     kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                     dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -1088,7 +1089,8 @@ const animate = function (timeStamp)
                 else if(r===1)
                 {
                     stage = 'eatenAngry';
-                    setDoraText(colorArray[dora.colorNumber].dragonOne + 'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。激しめに味わってやろう。');
+                    setDoraText(colorArray[dora.colorNumber].dragonOne +
+                        'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。激しめに味わってやろう。');
                     speedPlay += 0.2;
                     kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                     dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -1099,7 +1101,8 @@ const animate = function (timeStamp)
                 else if(r===2)
                 {
                     stage = 'eatenAngry';
-                    setDoraText(colorArray[dora.colorNumber].dragonOne + 'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。長めに味わってやろう。');
+                    setDoraText(colorArray[dora.colorNumber].dragonOne +
+                        'を無視しようとするとはいい度胸'+colorArray[dora.colorNumber].dragonDa+'な。長めに味わってやろう。');
                     longPlay += 0.2;
                     kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
                     dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -1755,18 +1758,18 @@ const animate = function (timeStamp)
         {
             if(tankCc + damCc <= 0 && !gameOver)
             {
-                speedPlay = 0.4;
+                speedPlay = 0.6;
                 wait = 9000;
                 gameOver = true;
                 let r = randomInt(8);
-                if(r === 0) setDoraText('ぐへへ、もう出ないな。')
+                if(r === 0) setDoraText('ぐへへ、もう蜜が出ないな。')
                 if(r === 1) setDoraText('ぐへへ、もう干からびたな。')
-                if(r === 2) setDoraText('ぐへへ、もう出しきったな。')
-                if(r === 3) setDoraText('ぐへへ、もう水分が無いな。')
-                if(r === 4) setDoraText('ぐへへ、もう漏らしきったな。')
-                if(r === 5) setDoraText('ぐへへ、もう出なくなったな。')
-                if(r === 6) setDoraText('ぐへへ、もう漏らせないな。')
-                if(r === 7) setDoraText('ぐへへ、もう出せないな。')
+                if(r === 2) setDoraText('ぐへへ、もう蜜を出しきったな。')
+                if(r === 3) setDoraText('ぐへへ、もう蜜が無いな。')
+                if(r === 4) setDoraText('ぐへへ、もう蜜を漏らしきったな。')
+                if(r === 5) setDoraText('ぐへへ、もう蜜が出なくなったな。')
+                if(r === 6) setDoraText('ぐへへ、もう蜜を出し尽くしたな。')
+                if(r === 7) setDoraText('ぐへへ、もう蜜を出せないな。')
             }
             if(gameOver && wait < 1000)
             {
@@ -1818,11 +1821,20 @@ const animate = function (timeStamp)
             {
                 let r = randomInt(6);
                 if(r===0)
-                setDoraText('気持ちよかった'+colorArray[dora.colorNumber].dragonDa+'ろ。' + colorArray[dora.colorNumber].dragonTwo + 'はしばらくそこにいろ。水分は与えてやるから。');
+                setDoraText(
+                    '気持ちよかった'+colorArray[dora.colorNumber].dragonDa+'ろ、'+kemo.rorishota+'よ。' +
+                    colorArray[dora.colorNumber].dragonTwo +
+                    'はしばらくそこにいろ。水分は与えてやるから。'
+                );
                 else if(r===1)
-                    setDoraText('気持ちよかった'+colorArray[dora.colorNumber].dragonDa+'ろ。' + colorArray[dora.colorNumber].dragonTwo + 'はしばらくそこに閉じ込めてやる。');
+                    setDoraText(
+                        '気持ちよかった'+colorArray[dora.colorNumber].dragonDa+
+                        'ろ、'+kemo.rorishota+'よ。' +
+                        colorArray[dora.colorNumber].dragonTwo +
+                        'はしばらくそこに閉じ込めてやる。');
                 else if(r===2)
-                    setDoraText('残念'+colorArray[dora.colorNumber].dragonDa+'ったな、美味しい美味しい' + kemo.rorishota + 'よ。水分は与えてやるから、しばらくそこにいろ。');
+                    setDoraText('残念'+colorArray[dora.colorNumber].dragonDa+'ったな、美味しい美味しい' +
+                        kemo.rorishota + 'よ。水分は与えてやるから、しばらくそこにいろ。');
                 else if(r===3)
                     setDoraText('残念'+colorArray[dora.colorNumber].dragonDa+'ったな、美味しい美味しい' + kemo.rorishota + 'よ。しばらくそこに閉じ込めてやる。');
                 else if(r===4)
@@ -1830,9 +1842,9 @@ const animate = function (timeStamp)
                 else if(r===5)
                     setDoraText('よかったぞ、美味しい美味しい' + kemo.rorishota + 'よ。水分は与えてやるから、しばらくそこにいろ。');
                 else if(r===6)
-                    setDoraText('気持ちよくて水分を出しきったか。しばらくそこにいろ、水分を与えてやるから。');
+                    setDoraText('気持ちよくて'+kemo.rorishota+'の蜜を出しきったようだな。しばらくそこにいろ、水分を与えてやるから。');
                 else if(r===7)
-                    setDoraText('気持ちよくて水分を出しきったか。しばらくそこに閉じめてやる。');
+                    setDoraText('気持ちよくて'+kemo.rorishota+'の蜜を出しきったようだな。しばらくそこに閉じめてやる。');
                 wait = 6000;
                 stage = 'dry';
             }
@@ -1918,7 +1930,6 @@ const animate = function (timeStamp)
     {
         damCc = 0;
         tankCc = 128;
-        setKemoText('Kuwareta 1.1.6 へようこそ。');
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
@@ -1958,8 +1969,24 @@ const animate = function (timeStamp)
         kemo.sprite.translate(0,-192+32);
         dora.sprite.translate(512,0);
 
+        kemo.colorNumber = randomInt(6);
         dora.colorNumber = randomInt(6);
 
+        kemo.sprite.setColor(
+            colorArray[kemo.colorNumber].middle,
+            colorArray[kemo.colorNumber].light,
+            colorArray[kemo.colorNumber].dark,
+        );
+        bar[0].sprite.setColor(
+            colorArray[kemo.colorNumber].middle,
+            colorArray[kemo.colorNumber].light,
+            colorArray[kemo.colorNumber].dark,
+        );
+        bar[1].sprite.setColor(
+            colorArray[kemo.colorNumber].middle,
+            colorArray[kemo.colorNumber].light,
+            colorArray[kemo.colorNumber].dark,
+        );
 
         dora.sprite.setColor(
             colorArray[dora.colorNumber].middle,
@@ -1972,6 +1999,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
+        setKemoText('Kuwareta 1.1.7 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
@@ -1985,7 +2013,7 @@ const animate = function (timeStamp)
     else if(stage === 'start')
     {
         setButton('ケモロリだよ','ケモロリショタ','ケモショタだよ');
-        wait = 12800000;
+        wait = 1280000;
     }
     // 歩き中
     else if(stage === 'walk')
@@ -2027,9 +2055,15 @@ const animate = function (timeStamp)
                 longPlay = 1.0;
                 stage = 'findTheDragon';
                 if(dora.colorNumber === 6)
+                {
                     setKemoText(colorArray[dora.colorNumber].kemoColorName+'のドラゴンさんだ…。ちょっとこわい…。');
+                    wantToLeak = true;
+                }
                 else if(dora.colorNumber === 7)
-                    setKemoText(colorArray[dora.colorNumber].kemoColorName+'のドラゴンさんだ！やった！');
+                {
+                    setKemoText(colorArray[dora.colorNumber].kemoColorName+'のドラゴンさんだ！');
+                    wantToLeak = false;
+                }
                 else
                     setKemoText(colorArray[dora.colorNumber].kemoColorName+'のドラゴンさんだ。どうしよう。');
                 kemo.sprite.setRange(0/4, 0/4, 1/4, 1/4)
@@ -2117,7 +2151,7 @@ const animate = function (timeStamp)
         let r = randomInt(4);
         if(r===0)
         {
-            setDoraText('今、蹴ったな。罰としてかなり強めに味わってやる。');
+            setDoraText('今、けったな。罰としてかなり強めに味わってやる。');
             strongPlay += 0.6;
             kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
             dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -2128,7 +2162,7 @@ const animate = function (timeStamp)
         }
         if(r===1)
         {
-            setDoraText('今、蹴ったな。罰としてかなり激しめに味わってやる。');
+            setDoraText('今、けったな。罰としてかなり激しめに味わってやる。');
             speedPlay += 0.6;
             kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
             dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -2138,7 +2172,7 @@ const animate = function (timeStamp)
         }
         if(r===2)
         {
-            setDoraText('今、蹴ったな。罰としてかなり長めに味わってやる。');
+            setDoraText('今、けったな。罰としてかなり長めに味わってやる。');
             longPlay += 0.6;
             kemo.sprite.setRange(2/4, 1/4, 1/4, 1/4);
             dora.sprite.setRange(1/4, 0/16, 1/4, 1/16);
@@ -2148,7 +2182,7 @@ const animate = function (timeStamp)
         }
         if(r===3)
         {
-            setDoraText('悪い子には長く強く激しいお仕置きが必要'+colorArray[dora.colorNumber].dragonDa+'。');
+            setDoraText('けるような悪い子には念入りなお仕置きが必要'+colorArray[dora.colorNumber].dragonDa+'。始めるぞ。');
             longPlay += 0.2;
             speedPlay += 0.2;
             strongPlay += 0.2;
@@ -2176,7 +2210,7 @@ const animate = function (timeStamp)
     {
         let r = randomInt(4);
         if(r===0)
-            setKemoText('いやあん、たべないで…。');
+            setKemoText('いやああ、たべないで…。');
         else if(r===1)
             setKemoText('やだあ、たべるの…。');
         else if(r===2)
@@ -2191,15 +2225,31 @@ const animate = function (timeStamp)
     {
         if(!gameOver)
         {
-            let r = randomInt(4);
+            let r = randomInt(8);
             if(r===0)
                 setDoraText('いただきます。');
             else if(r===1)
                 setDoraText('ではいただくぞ。');
             else if(r===2)
-                setDoraText('せいぜいがんばれよ。');
+                setDoraText('せいぜいがんばれよ。では食うぞ。');
             else if(r===3)
                 setDoraText('まずは口の中で遊んでやる。');
+            else if(r===4 && wantToLeak)
+                setDoraText('たくさん'+kemo.rorishota+'の蜜を出せよ。期待してるぞ。');
+            else if(r===4 && !wantToLeak)
+                setDoraText('蜜があまり出すぎないように、くれぐれも我慢しろよ。');
+            else if(r===5 && wantToLeak)
+                setDoraText('たっぷり'+kemo.rorishota+'の蜜を出せよ。味わい尽くしてやる。');
+            else if(r===5 && !wantToLeak)
+                setDoraText('蜜をあまり出しすぎないよう、くれぐれも我慢しろよ。');
+            else if(r===6 && wantToLeak)
+                setDoraText(kemo.rorishota+'の蜜をたくさん出せよ。では食うぞ。');
+            else if(r===6 && !wantToLeak)
+                setDoraText('蜜が出すぎないように我慢しろよ。ではいただくぞ。');
+            else if(r===7 && wantToLeak)
+                setDoraText('甘い甘い'+kemo.rorishota+'の蜜を出せよ。全部味わってやる。');
+            else if(r===7 && !wantToLeak)
+                setDoraText('気持ちいだろうが、蜜を出しすぎないように耐えろよ。');
             currentSavore = randomInt(8);
         }
         wait = 3000;
@@ -2312,10 +2362,10 @@ const animate = function (timeStamp)
             }
             else if(kemo.colorNumber === dora.colorNumber)
             {
-                strongPlay += 0.2;
+                strongPlay += 0.3;
                 setDoraText(
                     colorArray[kemo.colorNumber].doraColorName +
-                    'の子は大好物なの'+colorArray[dora.colorNumber].dragonDa+
+                    'の子の味は大好物なの'+colorArray[dora.colorNumber].dragonDa+
                     '。口の中で強く'+savore[currentSavore].suru+'から覚悟しろよ。'
                 );
             }
@@ -2325,6 +2375,22 @@ const animate = function (timeStamp)
                 setDoraText(colorArray[kemo.colorNumber].doraColorName +
                     'の子は食べ応えがあって好物なの'+colorArray[dora.colorNumber].dragonDa+
                     '。では口の中で'+savore[currentSavore].suru+'ぞ。'
+                );
+            }
+            else if(
+                kemo.colorNumber < 6 && dora.colorNumber < 6 &&
+                loopInt(kemo.colorNumber + 3, 6) === dora.colorNumber ||
+                kemo.colorNumber >= 6 && dora.colorNumber >= 6 &&
+                loopInt(kemo.colorNumber + 1, 2) === loopInt(dora.colorNumber, 2)
+            )
+            {
+                speedPlay += 0.1;
+                longPlay += 0.1;
+                strongPlay += 0.1;
+                setDoraText(colorArray[kemo.colorNumber].doraColorName +
+                    'の'+kemo.rorishota+'は大好きな香りなの'+
+                    colorArray[dora.colorNumber].dragonDa+
+                    '。口でじっくり'+savore[currentSavore].shite+'やる。'
                 );
             }
             else
@@ -2627,7 +2693,7 @@ const animate = function (timeStamp)
     {
         if(!gameOver)
         {
-            let r = randomInt(8);
+            let r = randomInt(16);
             if(r===0)
                 setKemoText(
                     savore[currentSavore].kemoSa+
@@ -2661,13 +2727,21 @@ const animate = function (timeStamp)
             else if(r===6)
                 setKemoText(
                     savore[currentSavore].kemoShite+
-                    'も　あまり　もらさないもん…。'
+                    'も　あまり　もらさないからね…。'
                 );
             else if(r===7)
                 setKemoText(
                     savore[currentSavore].kemoSare+
                     'たら　でちゃう…。'
                 );
+            else if(r===8) setKemoText('やさしくして…。');
+            else if(r===9) setKemoText('きもちよくね…。');
+            else if(r===10) setKemoText('あんまり　'+savore[currentSavore].kemoShi+'すぎないでね…。');
+            else if(r===11) setKemoText('あんまり　'+savore[currentSavore].kemoSa+'ないでね…。');
+            else if(r===12) setKemoText('きもちよすぎるのは　だめだよ…。');
+            else if(r===13) setKemoText('やだ、もれちゃうよ…。');
+            else if(r===14) setKemoText('やだ、でちゃうよ…。');
+            else if(r===15) setKemoText('きもちよく　しすぎないで…。');
             wait = 3000;
         }
         else wait = 1;
@@ -2717,11 +2791,13 @@ const animate = function (timeStamp)
             'されるのは。');
             animation = -100;
             if(dora.colorNumber === 6)
+            {
                 speedPlay += 1;
+            }
             if(dora.colorNumber === 7)
             {
                 longPlay += 1;
-                speedPlay += 0.4;
+                speedPlay -= 0.4;
                 strongPlay += 0.4;
             }
             wait = 12000 * longPlay;
@@ -2826,25 +2902,26 @@ const animate = function (timeStamp)
                 }
                 else if(dragonCc<5)
                 {
-                    setDoraText('ほとんど出さなかったな。次はかなり念入りにしてやるから、もっと出せ。');
+                    setDoraText('ほとんど出さなかったな。次はかなり念入りにしてやるから、もっと'+kemo.rorishota+'の蜜を出せ。');
                     longPlay += 0.2;
                     strongPlay += 0.2;
                     speedPlay += 0.2;
                 }
                 else if(dragonCc<10)
                 {
-                    setDoraText('少ししか出さなかったな。次は念入りにしてやるから、もっと出せ。');
+                    setDoraText('少ししか出さなかったな。次は念入りにしてやるから、もっと'+kemo.rorishota+'の蜜を出せ。');
                     longPlay += 0.2;
                     strongPlay += 0.2;
                 }
                 else if(dragonCc<15)
                 {
-                    setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'な。次は少し念入りにしてやるから、もっと出せ。');
+                    setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+
+                        'な。次は少し念入りにしてやるから、もっと'+kemo.rorishota+'の蜜を出せ。');
                     strongPlay += 0.2;
                 }
-                else if(dragonCc<20) setDoraText('まあまあの量を出したな。えらいぞ。');
-                else if(dragonCc<25) setDoraText('多めに出したな。えらいぞ。');
-                else setDoraText('たっぷり出したな。えらいぞ。');
+                else if(dragonCc<20) setDoraText('まあまあの量の蜜を出したな。えらいぞ。');
+                else if(dragonCc<25) setDoraText('多めに蜜を出したな。えらいぞ。');
+                else setDoraText('たっぷりの蜜を出したな。えらいぞ。');
             }
             else
             {
@@ -2853,23 +2930,23 @@ const animate = function (timeStamp)
                     setDoraText('どうした。全然出ないぞ。');
                     longPlay -= 0.2;
                 }
-                else if(dragonCc<5)       setDoraText('ほとんど出さなかったな。えらいぞ。');
-                else if(dragonCc<10) setDoraText('少ししか出さなかったな。えらいぞ。');
-                else if(dragonCc<15) setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'ったな。えらいぞ。');
+                else if(dragonCc<5)       setDoraText('ほとんど蜜を出さなかったな。えらいぞ。');
+                else if(dragonCc<10) setDoraText('少ししか蜜を出さなかったな。えらいぞ。');
+                else if(dragonCc<15) setDoraText('出る蜜の量が少なめ'+colorArray[dora.colorNumber].dragonDa+'ったな。えらいぞ。');
                 else if(dragonCc<20)
                 {
-                    setDoraText('ちょっと出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'ぞ。次は少しやさしめにしてやるから、少しは我慢しろ。');
+                    setDoraText('ちょっと蜜を出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'ぞ。次は少しやさしめにしてやるから、少しは耐えろ。');
                     strongPlay -= 0.2;
                 }
                 else if(dragonCc<25)
                 {
-                    setDoraText('多く出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。次はやさしめにしてやるから、少しは我慢しろ。');
+                    setDoraText('蜜を多く出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。次はやさしめにしてやるから、少しは耐えろ。');
                     longPlay -= 0.2;
                     strongPlay -= 0.2;
                 }
                 else
                 {
-                    setDoraText('大量に出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。次はかなりやさしめにしてやるから、少しは我慢しろ。');
+                    setDoraText('蜜を大量に出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。次はかなりやさしめにしてやるから、少しは耐えろ。');
                     longPlay -= 0.2;
                     strongPlay -= 0.2;
                     speedPlay -= 0.2;
@@ -2898,28 +2975,28 @@ const animate = function (timeStamp)
                     }
                     else if(dragonCc<5)
                     {
-                        setDoraText('ほとんど出さなかったな。もっと出せ。');
+                        setDoraText('ほとんど出さなかったな。もっと'+kemo.rorishota+'の蜜出せ。');
                         longPlay += 0.2;
                         strongPlay += 0.2;
                         speedPlay += 0.2;
                     }
                     else if(dragonCc<10)
                     {
-                        setDoraText('少ししか出さなかったな。もっと出せ。');
+                        setDoraText('少ししか出さなかったな。もっと'+kemo.rorishota+'の蜜を出せ。');
                         longPlay += 0.2;
                         strongPlay += 0.2;
                     }
                     else if(dragonCc<15)
                     {
-                        setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'な。もっと出せ。');
+                        setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'な。もっと'+kemo.rorishota+'の蜜出せ。');
                         strongPlay += 0.2;
                     }
-                    else if(dragonCc<20) setDoraText('まあまあの量を出したな。えらいぞ。');
-                    else if(dragonCc<25) setDoraText('多めに出したな。えらいぞ。');
-                    else setDoraText('たっぷり出したな。えらいぞ。');
+                    else if(dragonCc<20) setDoraText('まあまあの量の蜜を出したな。えらいぞ。');
+                    else if(dragonCc<25) setDoraText('多めに蜜を出したな。えらいぞ。');
+                    else setDoraText('たっぷりの蜜を出したな。えらいぞ。');
                 }
                 else setDoraText(
-                    'ぐへへへへ、あんまり出すから' + colorArray[dora.colorNumber].dragonOne +
+                    'ぐへへへへ、あんまり蜜を出すから' + colorArray[dora.colorNumber].dragonOne +
                     'はもう' + colorArray[dora.colorNumber].doraColorName + colorArray[dora.colorNumber].dragonDa + 
                     '。たくさん出してくれて礼を言うぞ。');
             }
@@ -2929,35 +3006,35 @@ const animate = function (timeStamp)
                 {
                     if(dragonCc<=0)
                     {
-                        setDoraText('どうした。全然出ないぞ。');
+                        setDoraText('どうした。全然蜜が出ないぞ。');
                         longPlay -= 0.2;
                     }
-                    else if(dragonCc<5)       setDoraText('ほとんど出さなかったな。えらいぞ。');
-                    else if(dragonCc<10) setDoraText('少ししか出さなかったな。えらいぞ。');
-                    else if(dragonCc<15) setDoraText('出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'ったな。えらいぞ。');
+                    else if(dragonCc<5)  setDoraText('ほとんど'+kemo.rorishota+'の蜜が出さなかったな。えらいぞ。');
+                    else if(dragonCc<10) setDoraText('少ししか'+kemo.rorishota+'の蜜が出さなかったな。えらいぞ。');
+                    else if(dragonCc<15) setDoraText('蜜が出る量が少なめ'+colorArray[dora.colorNumber].dragonDa+'ったな。えらいぞ。');
                     else if(dragonCc<20)
                     {
-                        setDoraText('ちょっと出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'ぞ。少しは我慢しろ。');
+                        setDoraText('ちょっと蜜を出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'ぞ。少しは耐えろ。');
                         strongPlay -= 0.2;
                     }
                     else if(dragonCc<25)
                     {
-                        setDoraText('多く出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。少しは我慢しろ。');
+                        setDoraText('蜜を多く出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。少しは耐えろ。');
                         longPlay -= 0.2;
                         strongPlay -= 0.2;
                     }
                     else
                     {
-                        setDoraText('大量に出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。少しは我慢しろ。');
+                        setDoraText('蜜を大量に出し過ぎ'+colorArray[dora.colorNumber].dragonDa+'。少しは耐えろ。');
                         longPlay -= 0.2;
                         strongPlay -= 0.2;
                         speedPlay -= 0.2;
                     }
                 }
                 else setDoraText(
-                    'あんまり出すから、' + colorArray[dora.colorNumber].dragonOne +
+                    'あんまり蜜を出すから、' + colorArray[dora.colorNumber].dragonOne +
                     'はもう' + colorArray[dora.colorNumber].doraColorName + colorArray[dora.colorNumber].dragonDa + 
-                    '。全く、次はこんなに出すなよ。');
+                    '。悪い子め。');
             }
             dragonCc = 0;
             wait = 3000;
