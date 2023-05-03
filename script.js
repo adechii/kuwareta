@@ -1798,7 +1798,7 @@ const animate = function (timeStamp)
             }
             if(gameOver && wait < 40000 && milkingStage === 2)
             {
-                speedPlay = 2;
+                speedPlay = 1.5;
                 milkingStage = 3;
                 let r = randomInt(4);
                 if(r === 0) setDoraText('いくぞ。たっぷり出せよ。');
@@ -1808,7 +1808,7 @@ const animate = function (timeStamp)
             }
             if(gameOver && wait < 30000 && milkingStage === 3)
             {
-                speedPlay = 3;
+                speedPlay = 2;
                 milkingStage = 4;
                 let r = randomInt(4);
                 if(r === 0) setKemoText('いやああ！だええ！もうとえてええ！');
@@ -1818,7 +1818,7 @@ const animate = function (timeStamp)
             }
             if(gameOver && wait < 20000 && milkingStage === 4)
             {
-                speedPlay = 4;
+                speedPlay = 3;
                 milkingStage = 5;
                 let r = randomInt(4);
                 if(r === 0) setDoraText('さあ、美味しいのを期待してるぞ。出してしまえ。');
@@ -1997,7 +1997,7 @@ const animate = function (timeStamp)
             else if(stage === 'dry'){
                 stage = 'result';
                 let r = randomInt(4);
-                if(r === 0) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、きもちよくて、ひからびちゃった。さいこうに　きもちよかった…。');
+                if(r === 0) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、ひからびちゃった。さいこうに　きもちよかった…。');
                 if(r === 1) setKemoText(dragonNumber + 'たいめのドラゴンさんに、しぼりつくされちゃった。さいこうに　きもちよかった…。');
                 if(r === 2) setKemoText(dragonNumber + 'たいめのドラゴンさんのなかで、すいつくされちゃった。さいこうに　きもちよかった…。');
                 if(r === 3) setKemoText(dragonNumber + 'たいめのドラゴンさんに、あじわいつくされちゃった。さいこうに　きもちよかった…。');
@@ -2044,7 +2044,7 @@ const animate = function (timeStamp)
     if(stage === 'title')
     {
         damCc = 0;
-        tankCc = 128;
+        tankCc = 16;
         animationTimeStamp = timeStamp;
         longPlay = 1.0;
         speedPlay = 1.0;
@@ -2117,7 +2117,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.8 へようこそ。');
+        setKemoText('Kuwareta 1.1.9 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
