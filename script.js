@@ -291,15 +291,19 @@ const loopInt = function(n, m)
 let leftButtonDown = false;
 let centerButtonDown = false;
 let rightButtonDown = false;
+
+let firstStartButton = true;
+const oscillator = [];
+
 buttonLElem.addEventListener('pointerdown',function(e)
 {
     leftButtonDown = true;
-                if(firstStartButton)
-                {
-                    oscillator[0].start();
-                    oscillator[1].start();
-                    firstStartButton = false;
-                }
+    if(firstStartButton)
+    {
+        oscillator[0].start();
+        oscillator[1].start();
+        firstStartButton = false;
+    }
 });
 buttonCElem.addEventListener('pointerdown',function(e)
 {
@@ -596,7 +600,7 @@ const complaint =
 
 // 音
 const audioCtx = new AudioContext();
-const oscillator = [];
+
 const gainNode = [];
 
 for(let i = 0 ; i < 2 ; i++)
@@ -656,8 +660,6 @@ let nextRight = true;
 
 let gameOver = false;
 let dragonKeep = false;
-
-let firstStartButton = true;
 
 let flushColor = false;
 
@@ -2129,7 +2131,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.B へようこそ。');
+        setKemoText('Kuwareta 1.1.A へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
