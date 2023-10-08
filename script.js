@@ -619,7 +619,7 @@ const sound = function(startFrequency, endFrequemcy, time)
     oscillator[soundNumber].frequency.linearRampToValueAtTime(startFrequency, audioCtx.currentTime + time * 9 / 12);
     oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 12 / 12);
     gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time / 12);
-    gainNode[soundNumber].gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + time * 2 / 12);
+    gainNode[soundNumber].gain.linearRampToValueAtTime(1.0, audioCtx.currentTime + time * 2 / 12);
     gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time);
     soundNumber = (soundNumber + 1) % 2;
 }
@@ -2073,8 +2073,8 @@ const animate = function (timeStamp)
         question = -1;
         savoreArray = [0,1,2];
         currentSavore = 0;
-        wantToLeak = false;
-    
+        wantToLeak = randomInt(2);
+        
         animation = -100;
     
         whiteDragonNumber = 5 + randomInt(5);
@@ -2129,7 +2129,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.A へようこそ。');
+        setKemoText('Kuwareta 1.1.B へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
