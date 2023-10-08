@@ -624,21 +624,6 @@ const complaint =
     'もうだえ、からだ　こわれゆ、…。',
     'はあ、はあ、はあ、はあ、はあ、…。',
 ];
-
-// 音
-const audioCtx =  new (window.AudioContext || window.webkitAudioContext)();
-
-const gainNode = [2];
-
-for(let i = 0 ; i < 2 ; i++)
-{
-    oscillator[i] = audioCtx.createOscillator();
-    gainNode[i] = audioCtx.createGain();
-    oscillator[i].type = 'sine';
-    //gainNode[i].gain.setValueAtTime(0.0, audioCtx.currentTime);
-    oscillator[i].connect(gainNode[i]);
-    gainNode[i].connect(audioCtx.destination);
-}
 let soundNumber = 0;
 
 const sound = function(startFrequency, endFrequemcy, time)
@@ -2158,7 +2143,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.9.3 へようこそ。');
+        setKemoText('Kuwareta 1.1.9.4 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
