@@ -599,7 +599,7 @@ const complaint =
 ];
 
 // 音
-const audioCtx = new AudioContext();
+const audioCtx =  new (window.AudioContext || window.webkitAudioContext)();
 
 const gainNode = [];
 
@@ -2131,7 +2131,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.A へようこそ。');
+        setKemoText('Kuwareta 1.1.9.1 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
