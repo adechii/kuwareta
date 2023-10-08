@@ -287,19 +287,44 @@ const loopInt = function(n, m)
     while(t < 0) t += m;
     return t;
 };
+// 音
+const audioCtx;
+
+const gainNode;
+const oscillator;
+
+const playStart = () =>
+{
+    // 音
+ audioCtx =  new (window.AudioContext || window.webkitAudioContext)();
+ oscillator = [2];
+ gainNode = [2];
+
+for(let i = 0 ; i < 2 ; i++)
+{
+    oscillator[i] = audioCtx.createOscillator();
+    gainNode[i] = audioCtx.createGain();
+    oscillator[i].type = 'sine';
+    //gainNode[i].gain.setValueAtTime(0.0, audioCtx.currentTime);
+    oscillator[i].connect(gainNode[i]);
+    gainNode[i].connect(audioCtx.destination);
+}
+}
+
 // ボタン押下
 let leftButtonDown = false;
 let centerButtonDown = false;
 let rightButtonDown = false;
 
 let firstStartButton = true;
-const oscillator = [2];
+
 
 buttonLElem.addEventListener('pointerdown',function(e)
 {
     leftButtonDown = true;
     if(firstStartButton)
     {
+        playStart()
         oscillator[0].start();
         oscillator[1].start();
         firstStartButton = false;
@@ -310,6 +335,7 @@ buttonCElem.addEventListener('pointerdown',function(e)
     centerButtonDown = true;
                 if(firstStartButton)
                 {
+                    playStart()
                     oscillator[0].start();
                     oscillator[1].start();
                     firstStartButton = false;
@@ -320,6 +346,7 @@ buttonRElem.addEventListener('pointerdown',function(e)
     rightButtonDown = true;
                 if(firstStartButton)
                 {
+                    playStart()
                     oscillator[0].start();
                     oscillator[1].start();
                     firstStartButton = false;
@@ -2131,7 +2158,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.9.2 へようこそ。');
+        setKemoText('Kuwareta 1.1.9.3 へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
