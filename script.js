@@ -2129,7 +2129,7 @@ const animate = function (timeStamp)
             colorArray[kemo.colorNumber].dark,
         );
 
-        setKemoText('Kuwareta 1.1.9 へようこそ。');
+        setKemoText('Kuwareta 1.1.A へようこそ。');
         nextObject = 'dragon';
         dora.sprite.x = Math.floor(nextDistance + 128);
     }
