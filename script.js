@@ -288,10 +288,10 @@ const loopInt = function(n, m)
     return t;
 };
 // 音
-const audioCtx;
+let audioCtx;
 
-const gainNode;
-const oscillator;
+let gainNode;
+let oscillator;
 
 const playStart = () =>
 {
