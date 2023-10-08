@@ -294,14 +294,32 @@ let rightButtonDown = false;
 buttonLElem.addEventListener('pointerdown',function(e)
 {
     leftButtonDown = true;
+                if(firstStartButton)
+                {
+                    oscillator[0].start();
+                    oscillator[1].start();
+                    firstStartButton = false;
+                }
 });
 buttonCElem.addEventListener('pointerdown',function(e)
 {
     centerButtonDown = true;
+                if(firstStartButton)
+                {
+                    oscillator[0].start();
+                    oscillator[1].start();
+                    firstStartButton = false;
+                }
 });
 buttonRElem.addEventListener('pointerdown',function(e)
 {
     rightButtonDown = true;
+                if(firstStartButton)
+                {
+                    oscillator[0].start();
+                    oscillator[1].start();
+                    firstStartButton = false;
+                }
 });
 
 //------------------
@@ -601,7 +619,7 @@ const sound = function(startFrequency, endFrequemcy, time)
     oscillator[soundNumber].frequency.linearRampToValueAtTime(startFrequency, audioCtx.currentTime + time * 9 / 12);
     oscillator[soundNumber].frequency.linearRampToValueAtTime(endFrequemcy, audioCtx.currentTime + time * 12 / 12);
     gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time / 12);
-    gainNode[soundNumber].gain.linearRampToValueAtTime(0.8, audioCtx.currentTime + time * 2 / 12);
+    gainNode[soundNumber].gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + time * 2 / 12);
     gainNode[soundNumber].gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + time);
     soundNumber = (soundNumber + 1) % 2;
 }
@@ -801,12 +819,6 @@ const animate = function (timeStamp)
                 if(r===6) setKemoText('おもらし　しないように　しなきゃ。');
                 if(r===7) setKemoText('いかなきゃ。');
 
-                if(firstStartButton)
-                {
-                    oscillator[0].start();
-                    oscillator[1].start();
-                    firstStartButton = false;
-                }
 
                 leftButtonDown = false;
                 centerButtonDown = false;
